@@ -1,0 +1,32 @@
+<nav>
+    <!--<button type="button" (click)="toggle()">{{ isOpen ? 'Close' : 'Open' }} the box</button>-->
+    <h1 style="text-align: center;">Welkom bij de ToDo-List van Ricky Dupuits!</h1>
+    <p style="text-align: center;">Wil jij de ToDo-List zien klik dan hier beneden.</p>
+    <div class="show-todo">
+    <a class="todo-btn" type="button" (click)="toggle()">{{ isOpen ? 'Laat de ToDo-List niet zien' : 'Laat de ToDo-List zien' }}</a>
+    </div>
+  </nav>
+  
+  <!--<div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container">
+    <p>The box is now {{ isOpen ? 'Open' : 'Closed' }}!</p>
+  </div>-->
+
+  <div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container">
+    <h1 style="text-align: center;">{{ isOpen ? 'ToDo-List' : '' }}</h1>
+    <br>
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-1g-3">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Enter Todo" aria-label="Enter Todo" aria-describedby="button-addon2" [(ngModel)]="newTodo">
+            <button class="btn btn-outline-secondary btn-primary" type="button" id="button-addon2" style="color: white;" (click)="saveTodo()">+ Add Todo</button>
+          </div>
+    <table class="table table-striped">
+      <tbody>
+        <tr *ngFor="let todo of todos;let i = index">
+          <th scope="row">{{i + 1}}</th>
+          <td class="{{(!todo.isCompleted)?'done':''}}" (click)="done(i)">{{todo.name}}</td>
+          <td style="color: red;font-weight: bold;" (click)="remove(i)">x</td>
+        </tr>
+    </table>
+  </div>
